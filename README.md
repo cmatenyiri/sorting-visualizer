@@ -59,6 +59,23 @@ ESLint fixes applied on save as well. Other editors can use `.prettierrc.json` a
 
 - **Lint & format**: `npm run lint -- --max-warnings=0` and `npm run format:check`
 - **Typecheck & build**: `npm run build`
+- **Deploy to GitHub Pages**: on pushes to `main` only, after both jobs above pass
+
+## Deployment
+
+The site is published to GitHub Pages at <https://cmatenyiri.github.io/sorting-visualizer/>.
+
+One-time setup: in the repository go to **Settings → Pages → Build and deployment** and set
+**Source** to **GitHub Actions**. After that, every push to `main` that passes CI is deployed
+automatically.
+
+The deploy job builds with `BASE_PATH` set to the Pages path (`/sorting-visualizer/`), which
+Vite uses as its `base`. To try that build locally:
+
+```bash
+BASE_PATH=/sorting-visualizer/ npm run build
+BASE_PATH=/sorting-visualizer/ npm run preview   # http://localhost:4173/sorting-visualizer/
+```
 
 ## How it works
 
